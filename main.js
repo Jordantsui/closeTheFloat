@@ -4,6 +4,9 @@ $(clickMe).on('click', function() {
     console.log('show')
     setTimeout(function() {
       console.log('添加 one click')
+      $(popover).on('click', function(e) {
+        e.stopPropagation()
+      })
       $(document).one('click', function() {
         console.log('我觉得这里不会执行')
         console.log('hide')
