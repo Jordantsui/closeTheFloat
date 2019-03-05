@@ -1,0 +1,42 @@
+body{
+    border: 1px solid red;
+  }
+  .wrapper{
+    position: relative;
+    display: inline-block;
+  }
+  .popover{
+    border: 1px solid red;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    white-space: nowrap;
+    /*不让浮层里的字换行*/
+    padding: 10px;
+    margin-left: 10px;
+    background: white;
+    display: none;
+  }
+  /*伪元素默认是inline元素*/
+  .popover::before{
+    position: absolute;
+    right: 100%;
+    /*这里，伪元素的位置是相对于主元素而言的*/
+    /*该正方形放在浮层的左侧，紧挨浮层*/
+    top: 5px;
+    border: 10px solid transparent;
+    /*由于没有内容，且border有10px宽，所以实际上就是正方形分成了四块，右边的一块是red，其他三块无色*/
+    border-right-color: red;
+    content: '';
+  }
+  .popover::after{
+    position: absolute;
+    right: 100%;
+    top: 5px;
+    border: 10px solid transparent;
+    border-right-color: white;
+    content: '';
+    margin-right: -1px;
+    /*由于after往右拉了1px，所以before的red就露出来了*/
+    /*如果没有margin-right，小三角形左边的红色边界仍有，但会变细很多*/
+  }
